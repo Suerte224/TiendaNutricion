@@ -1,0 +1,22 @@
+# Dependencias
+/vendor/
+
+# Logs
+*.log
+
+# Caché
+*.cache
+
+# Entorno
+.env
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Docker temporales
+docker/mysql/data/

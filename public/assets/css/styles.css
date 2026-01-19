@@ -1,0 +1,27 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-container nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.buscador {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.usuario-nav {
+    margin-left: auto; /* 👈 empuja a la derecha */
+}
