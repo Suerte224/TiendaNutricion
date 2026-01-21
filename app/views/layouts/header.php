@@ -37,6 +37,8 @@
          <div class="usuario-nav">
              <?php if (!isset($_SESSION['usuario'])) : ?>
                  <a href="<?= BASE_URL ?>?controller=Usuario&action=login">Login</a>
+             |
+                 <a href="<?=BASE_URL?>?controller=Usuario&action=registro">Registro</a>
              <?php else : ?>
                  <span><?= $_SESSION['usuario']->nombre ?></span>
                  |

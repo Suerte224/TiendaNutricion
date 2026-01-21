@@ -1,6 +1,31 @@
 <?php
 
 class UsuarioController{
+
+
+    public function registro(){
+        require_once __DIR__ ."/../views/usuario/registro.php";
+
+    }
+    public function guardar(){
+        if(!isset($_POST['nombre']) || !isset($_POST['email']) || !isset($_POST['password'])){
+            header("Location: ". BASE_URL . "?controller=Usuario&action=registro");
+            exit;
+        }
+        $usuario = new Usuario();
+        $resultado = $usuario->guardar(
+            $_POST['nombre'],
+            $_POST['apellidos'],
+            $_POST['email'],
+            $_POST['password']
+        );
+        if($resultado){
+            header("Location: ". BASE_URL . "?controller=Usuario&action=login");
+        }else{
+            $_SESSION['error_registro'] = "Error al registrar al usuario";
+            header("Location: ". BASE_URL . "?controller=Usuario&action=registro");
+        }
+    }
     public function login(){
         require_once __DIR__ ."/../views/usuario/login.php";
     }

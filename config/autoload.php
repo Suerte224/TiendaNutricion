@@ -9,6 +9,7 @@ require_once __DIR__ . "/Db.php";
 spl_autoload_register(function ($class) {
 
     $root = dirname(__DIR__);
+    $helper = $root . "/app/helpers/" . $class . ".php";
 
     $controller = $root . "/app/controllers/" . $class . ".php";
     $model      = $root . "/app/models/" . $class . ".php";
@@ -20,6 +21,10 @@ spl_autoload_register(function ($class) {
 
     if (file_exists($model)) {
         require_once $model;
+        return;
+    }
+    if (file_exists($helper)) {
+        require_once $helper;
         return;
     }
 });

@@ -10,21 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-<nav>
-    <a href="<?= BASE_URL ?>">Inicio</a> |
-    <a href="<?= BASE_URL ?>?controller=Categoria$action=index">
-        Categorias
-    </a>|
-    <form action="<?= BASE_URL?>" method="GET" style="display:inline;">
-        <input type="hidden" name="controller" value="Producto">
-        <input type="hidden" name="action" value="buscar">
-        <input type="text" name="q" placeholder="Buscar...">
-        <button type="submit">Buscar</button>
-    </form>
-    |
-    <a href="<?= BASE_URL?>?controller=Usuario&action=login">
-        Login
-    </a>
+
 </nav>
 </body>
 </html>
