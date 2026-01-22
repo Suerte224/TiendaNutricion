@@ -13,10 +13,11 @@ class ProductoController{
         $categorias = $categoria->listar();
 
         $producto = new Producto();
-        $productos = $producto->listarPorCategoria($_GET['id']);
+        $productos = $producto->listarPorCategoria($categoria_id)
+        ->fetchAll(PDO::FETCH_OBJ);
 
 
-        require_once __DIR__ ."/../views/home/index.php";
+        require_once __DIR__ ."/../views/producto/categoria.php";
     }
     public function buscar() {
         if(!isset($_GET['q'])){
@@ -30,7 +31,7 @@ class ProductoController{
 
         // Productos buscados
         $producto = new Producto();
-        $productos = $producto->buscar($texto);
+        $productos = $producto->buscar($texto)->fetchAll(PDO::FETCH_OBJ);
 
         require_once __DIR__ . '/../views/home/index.php';
 
@@ -158,7 +159,29 @@ class ProductoController{
         }
         header("Location: ". BASE_URL);
     }
+  public function ver(){
+        if(!isset($_GET['id'])){
+            header("Location: ". BASE_URL);
+            exit;
+        }
+        $id = (int)$_GET['id'];
+// Sidebar categorías
+      $categoria = new Categoria();
+      $categorias = $categoria->listar();
 
+      // Producto
+      $producto = new Producto();
+      $producto->setId($id);
+      $prod = $producto->getOne();
+
+      if(!$prod){
+          header("Location: ".BASE_URL);
+          exit;
+      }
+
+      require_once __DIR__."/../views/producto/ver.php";
+
+  }
 
 
 }

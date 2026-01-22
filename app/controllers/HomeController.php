@@ -9,7 +9,7 @@ class HomeController{
         $categorias = $categoria->listar();
 
         $producto = new Producto();
-        $productos=$producto->listar();
+        $productos=$producto->listar()->fetchAll(PDO::FETCH_OBJ);
         require_once __DIR__ ."/../views/home/index.php";
     }
 
