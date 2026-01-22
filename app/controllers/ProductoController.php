@@ -80,4 +80,85 @@ class ProductoController{
         }
         header("Location: ". BASE_URL);
     }
+    public function editar(){
+        if(!Utils::isAdmin()){
+            header("Location: ". BASE_URL);
+            exit;
+        }
+        if(isset($_GET['id'])){
+            $id = (int)$_GET['id'];
+
+            $producto = new Producto();
+            $producto->setId($id);
+            $prod = $producto->getOne();
+
+            $marca = new Marca();
+            $categoria = new Categoria();
+
+            $marcas = $marca->listar();
+            $categorias = $categoria->listar();
+
+            require_once __DIR__ ."/../views/producto/editar.php";
+
+        }else{
+            header("Location: ". BASE_URL);
+        }
+    }
+    public function actualizar(){
+        if(!Utils::isAdmin()){
+            header("Location: ". BASE_URL);
+            exit;
+        }
+        if($_POST){
+            $producto = new Producto();
+            $producto->setId($_POST['id']);
+            $producto->setNombre($_POST['nombre']);
+            $producto->setDescripcion($_POST['descripcion']);
+            $producto->setPrecio($_POST['precio']);
+            $producto->setMarcaId($_POST['marca_id']);
+            $producto->setCategoriaId($_POST['categoria_id']);
+
+            if (isset($_FILES['imagen']) && $_FILES['imagen']['name'] != '') {
+                $imagen = time() . '_' . $_FILES['imagen']['name'];
+                $ruta = $_SERVER['DOCUMENT_ROOT'] . '/assets/images/' . $imagen;
+
+                move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta);
+                $producto->setImagen($imagen);
+        }else {
+            $producto->setImagen($_POST['imagen_actual']);}
+        }
+        $producto->actualizar();
+        header("Location: ". BASE_URL);
+
+
+    }
+    public function eliminar(){
+        if(!Utils::isAdmin()){
+            header("Location: ". BASE_URL);
+            exit;
+        }
+
+        if(isset($_GET['id'])){
+            $id = (int)$_GET['id'];
+
+
+            $producto = new Producto();
+            $producto->setId($id);
+            $prod = $producto->getOne();
+             // para borrar la imagen del server
+            if($prod && $prod->imagen){
+                $ruta = $_SERVER['DOCUMENT_ROOT'] . '/assets/images/' . $prod->imagen;
+                if(file_exists($ruta)){
+                    unlink($ruta);
+                }
+            }
+
+            $producto->eliminar();
+
+        }
+        header("Location: ". BASE_URL);
+    }
+
+
+
 }

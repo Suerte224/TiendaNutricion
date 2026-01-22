@@ -3,6 +3,14 @@
 class UsuarioController{
 
 
+
+    public function index(){
+        Utils::isAdminOrRedirect();
+        $usuario = new Usuario();
+        $usuarios = $usuario->listar();
+        require_once __DIR__ ."/../views/usuario/index.php";
+    }
+
     public function registro(){
         require_once __DIR__ ."/../views/usuario/registro.php";
 
@@ -54,6 +62,13 @@ class UsuarioController{
         public function logout(){
             session_destroy();
             header("Location: ". BASE_URL);
+        }
+        public function perfil(){
+        if(!isset($_SESSION['usuario'])){
+            header("Location: ". BASE_URL);
+            exit;
+        }
+        require_once __DIR__ ."/../views/usuario/perfil.php";
         }
 
 }

@@ -10,12 +10,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/styles.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/styles.css">
 </head>
 <body>
 
-</body>
-</html>
+
 <header style="border-bottom:1px solid #ccc; padding:10px">
 
     <nav class="nav-container">
@@ -30,24 +29,47 @@
 
             <input type="text" name="q" placeholder="Buscar productos..." required>
 
-            <button type="submit" title="Buscar">
-                🔍
+            <button type="submit" title="Buscar">🔍
             </button>
-        </form>
-         <div class="usuario-nav">
-             <?php if (!isset($_SESSION['usuario'])) : ?>
-                 <a href="<?= BASE_URL ?>?controller=Usuario&action=login">Login</a>
-             |
-                 <a href="<?=BASE_URL?>?controller=Usuario&action=registro">Registro</a>
-             <?php else : ?>
-                 <span><?= $_SESSION['usuario']->nombre ?></span>
-                 |
-                 <a href="<?= BASE_URL ?>?controller=Usuario&action=logout">Salir</a>
-             <?php endif; ?>
-         </div>
 
-        </nav>
+        </form>
+        <div class="usuario-nav">
+
+            <?php if (!isset($_SESSION['usuario'])): ?>
+
+                <a href="<?= BASE_URL ?>?controller=Usuario&action=login">Login</a>
+                |
+                <a href="<?= BASE_URL ?>?controller=Usuario&action=registro">Registro</a>
+
+            <?php else: ?>
+
+                <span>Hola, <?= $_SESSION['usuario']->nombre ?></span>
+
+                <?php if (Utils::isAdmin()): ?>
+                    |
+                    <a href="<?= BASE_URL ?>?controller=Admin&action=index">
+                        Panel Admin
+                    </a>
+                <?php else: ?>
+                    |
+                    <a href="<?= BASE_URL ?>?controller=Usuario&action=perfil">
+                        Mi cuenta
+                    </a>
+                <?php endif; ?>
+
+                |
+                <a href="<?= BASE_URL ?>?controller=Usuario&action=logout">
+                    Salir
+                </a>
+
+            <?php endif; ?>
+
+        </div>
+
+    </nav>
 
 
 </header>
 
+</body>
+</html>

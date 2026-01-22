@@ -14,6 +14,15 @@ class Producto{
     private $categoria_id;
 
     private $fecha;
+    private $id;
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
 
     public function __construct(){
         $this->db = new Db();
@@ -85,8 +94,6 @@ class Producto{
         $this->categoria_id = $categoria_id;
     }
 
-
-
     public function listar(){
         $sql = "SELECT * FROM productos ORDER BY id DESC";
         return $this->db->lanzar_consulta($sql);
@@ -127,6 +134,43 @@ class Producto{
         ];
 
         $this->db->lanzar_consulta($sql, $params);
+    }
+    public function getOne(){
+        $sql = "SELECT * FROM productos WHERE id = :id";
+        return $this->db->lanzar_consulta($sql, ['id' => $this->id])->fetch(PDO::FETCH_OBJ);
+    }
+    public function actualizar(){
+        $sql = "
+        UPDATE productos SET 
+            marca_id = :marca_id,
+            categoria_id = :categoria_id,
+            nombre = :nombre,
+            descripcion = :descripcion,
+            precio = :precio,
+            stock = :stock,
+            oferta = :oferta,
+            imagen = :imagen
+        WHERE id = :id
+    ";
+
+        $params = [
+            'marca_id' => $this->marca_id,
+            'categoria_id' => $this->categoria_id,
+            'nombre' => $this->nombre,
+            'descripcion' => $this->descripcion,
+            'precio' => $this->precio,
+            'stock' => $this->stock,
+            'oferta' => $this->oferta,
+            'imagen' => $this->imagen,
+            'id' => $this->id
+        ];
+
+
+        return $this->db->lanzar_consulta($sql, $params);
+    }
+    public function eliminar(){
+        $sql = "DELETE FROM productos WHERE id = :id";
+        return $this->db->lanzar_consulta($sql, ['id' => $this->id]);
     }
 
 }

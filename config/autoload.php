@@ -1,8 +1,6 @@
 <?php
 
 require_once __DIR__ . "/config.php";
-
-
 require_once __DIR__ . "/Db.php";
 
 // 3️⃣ DESPUÉS autoload de modelos y controladores

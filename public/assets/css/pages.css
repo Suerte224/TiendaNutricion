@@ -1,0 +1,17 @@
+/* ADMIN */
+.admin-panel ul {
+    list-style: none;
+}
+
+.admin-panel li {
+    margin-bottom: 8px;
+}
+
+/* LOGIN / REGISTRO */
+.auth-form {
+    max-width: 400px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+}

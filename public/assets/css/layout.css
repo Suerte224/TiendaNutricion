@@ -1,0 +1,26 @@
+header {
+    background: white;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.usuario-nav {
+    display: flex;
+    gap: 10px;
+}
+
+aside {
+    background: white;
+    padding: 15px;
+    border-right: 1px solid #ddd;
+}
+
+main {
+    padding: 20px;
+}

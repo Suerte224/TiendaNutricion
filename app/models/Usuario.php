@@ -7,6 +7,11 @@ class Usuario{
     public function __construct(){
         $this->db = new Db();
     }
+
+    public function listar(){
+        $sql = "SELECT * FROM usuarios ORDER BY nombre ASC";
+        return $this->db->lanzar_consulta($sql);
+    }
     public function guardar($nombre, $apellidos, $email, $password){
         $sql = "INSERT INTO usuarios (nombre, apellidos, email, password) VALUES (?,?,?,?)";
         return $this->db->lanzar_consulta($sql, array($nombre, $apellidos, $email, $password));
