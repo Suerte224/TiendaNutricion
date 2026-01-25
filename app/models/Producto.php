@@ -173,4 +173,14 @@ class Producto{
         return $this->db->lanzar_consulta($sql, ['id' => $this->id]);
     }
 
+    public function contarTodos(){
+        $sql = "SELECT COUNT(id) as total FROM productos";
+        $stmt = $this->db->lanzar_consulta($sql);
+        return $stmt->fetch(PDO::FETCH_OBJ)->total;
+    }
+    public function listarPaginados($offset, $limit){
+        $sql = "SELECT COUNT(id) as total FROM productos";
+        return $this->db->lanzar_consulta($sql)->fetch(PDO::FETCH_OBJ);
+    }
+
 }
