@@ -2,6 +2,7 @@
   require_once __DIR__ . '/../layouts/header.php';?>
 
 <h1>Panel de administracion</h1>
+
     <ul>
         <li>
             <a href="<?= BASE_URL ?>?controller=Categoria&action=index">

@@ -179,8 +179,17 @@ class Producto{
         return $stmt->fetch(PDO::FETCH_OBJ)->total;
     }
     public function listarPaginados($offset, $limit){
-        $sql = "SELECT COUNT(id) as total FROM productos";
-        return $this->db->lanzar_consulta($sql)->fetch(PDO::FETCH_OBJ);
+        $sql = "SELECT * FROM productos ORDER BY id DESC LIMIT $offset, $limit";
+        return $this->db->lanzar_consulta($sql)->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function destacados($limit = 4){
+        $sql = "SELECT * FROM productos ORDER BY fecha DESC LIMIT $limit";
+        return $this->db->lanzar_consulta($sql)->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function ofertas($limit = 4){
+        $sql = "SELECT * FROM productos WHERE oferta = 1 ORDER BY fecha DESC LIMIT $limit";
+        return $this->db->lanzar_consulta($sql)->fetchAll(PDO::FETCH_OBJ);
     }
 
 }

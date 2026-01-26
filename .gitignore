@@ -1,5 +1,5 @@
 # Dependencias
-/vendor/
+/app/libs/vendor/
 
 # Logs
 *.log

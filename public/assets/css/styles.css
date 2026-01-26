@@ -3,31 +3,124 @@
 @import url("components.css");
 @import url("pages.css");
 
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+:root {
+    --brand-red: #d90012;
+    --brand-black: #0e0e0e;
+    --brand-dark: #141414;
+    --brand-gray: #1f1f1f;
+    --text-light: #f5f5f5;
+    --text-muted: #b5b5b5;
 }
 
-.nav-container nav {
+body {
+    margin: 0;
+    background: var(--brand-black);
+    color: var(--text-light);
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.layout {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+.main-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* HEADER */
+.main-header {
+    background: #ffffff;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* LOGO */
+.logo img {
+    height: 42px;
+    display: block;
+}
+
+/* MENÚ */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #222;
+}
+
+.nav-links a:hover {
+    color: #d6001c;
+}
+
+/* BUSCADOR */
+.buscador {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+}
+
+.buscador input {
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.buscador button {
+    border: none;
+    background: #d6001c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* USUARIO */
+.usuario-nav {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.buscador {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
+.usuario-nav a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #333;
 }
 
-.nav-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.usuario-nav a:hover {
+    color: #d6001c;
 }
 
-.usuario-nav {
-    margin-left: auto; /* 👈 empuja a la derecha */
+.admin-link {
+    font-weight: 700;
 }
+
+.logout {
+    color: #b00016;
+}
+
+

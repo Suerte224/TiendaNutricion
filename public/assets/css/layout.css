@@ -1,26 +1,114 @@
-header {
-    background: white;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 20px;
+.main-header {
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    max-width: 1400px;
 }
 
+/* LOGO */
+.logo img {
+    height: 42px;
+    display: block;
+}
+
+
+/* BUSCADOR */
+.buscador {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+}
+
+.buscador input {
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.buscador button {
+    border: none;
+    background: #d6001c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* USUARIO */
 .usuario-nav {
     display: flex;
+    align-items: center;
     gap: 10px;
 }
 
-aside {
-    background: white;
-    padding: 15px;
-    border-right: 1px solid #ddd;
+.usuario-nav a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #333;
 }
 
-main {
-    padding: 20px;
+.usuario-nav a:hover {
+    color: #d6001c;
+}
+
+.admin-link {
+    font-weight: 700;
+}
+
+.logout {
+    color: #b00016;
+}
+
+/* ======================
+   FOOTER
+====================== */
+
+.main-footer {
+    background: #0b0b0b;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    max-width: 220px;   /* 🔥 AQUÍ estaba el problema */
+    width: 100%;
+    height: auto;
+    opacity: 0.85;
+    margin-bottom: 15px;
+}
+
+.footer-text {
+    color: #777;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+
+.main-content {
+    background: radial-gradient(circle at top, #151515, #000);
+    padding: 60px 20px;
+    max-width: 1600px;
+}
+
+/* CONTENEDOR REAL */
+.section {
+    max-width: 1400px;
+    padding: 40px 0;
+}
+.section > h2 {
+    max-width: 1200px;
+    margin: 0 auto 24px;
+    padding: 0 16px;
 }
